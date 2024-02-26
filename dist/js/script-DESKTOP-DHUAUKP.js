@@ -1,0 +1,47 @@
+//Navbar Fixed
+window.onscroll = function() {
+
+    const header = document.querySelector('header');
+    const fixedNav = header.offsetTop;
+
+
+    if(window.pageYOffset > fixedNav ) {
+        header.classList.add('navbar-fixed');
+    }
+
+    else {
+        header.classList.remove('navbar-fixed');
+
+    }
+
+};
+
+// Hamburger
+const hamburger = document.querySelector('#hamburger');
+const navMenu = document.querySelector('#nav-menu');
+
+
+
+hamburger.addEventListener('click', function(){
+    hamburger.classList.toggle('hamburger-active');
+    navMenu.classList.toggle('hidden');
+}); 
+
+// Wrap every letter in a span
+var textWrapper = document.querySelector('.ml6 .letters');
+textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+anime.timeline({loop: true})
+  .add({
+    targets: '.ml6 .letter',
+    translateY: ["1.1em", 0],
+    translateZ: 0,
+    duration: 750,
+    delay: (el, i) => 50 * i
+  }).add({
+    targets: '.ml6',
+    opacity: 0,
+    duration: 1000,
+    easing: "easeOutExpo",
+    delay: 1000
+  });
